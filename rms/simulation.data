@@ -1,0 +1,28 @@
+In the next lines we can observe the experimental approach of the program running on a multicore processor.
+
+Task 2- Release:  0.100, Completion:  0.380, Response: 0.280, WCRT: 0.280, Next Release:  0.500
+Task 1- Release:  0.100, Completion:  0.392, Response: 0.292, WCRT: 0.292, Next Release:  0.400
+Task 3- Release:  0.100, Completion:  0.450, Response: 0.350, WCRT: 0.350, Next Release:  0.700
+Task 1- Release:  0.400, Completion:  0.590, Response: 0.190, WCRT: 0.292, Next Release:  0.700
+Task 2- Release:  0.500, Completion:  0.643, Response: 0.143, WCRT: 0.280, Next Release:  0.900
+Task 1- Release:  0.700, Completion:  0.843, Response: 0.143, WCRT: 0.292, Next Release:  1.000
+Task 3- Release:  0.700, Completion:  0.844, Response: 0.144, WCRT: 0.350, Next Release:  1.300
+Task 2- Release:  0.900, Completion:  1.038, Response: 0.138, WCRT: 0.280, Next Release:  1.300
+Task 1- Release:  1.000, Completion:  1.144, Response: 0.144, WCRT: 0.292, Next Release:  1.300
+
+Conclusion: As we can clearly observe, the monotonic scheduling has great impact as a scheduling algorithm 
+based on a greedy approach in order to be able to serve as many tasks as possible within a hyperperiod.
+
+Though, there is a rough difference within the estimation and the reality. As its main purpose is to do a calculation
+that is based on a given time, we do not consider a lot of important factors in our result. 
+
+As our operating system executes the tasks, there might me a memory page fault at some point where the processor has to query the main memory to bring mostly instruction data
+to the cache(multiple function calls and branching is making it difficult to synchronise over time).
+
+We do not consider the context switch time, since there is a major difference within ARM and x86(in one case we have to save the program counter and a few registers
+were in x86 we have to save the wholestate of the processor).
+
+There is also the possibility that the actual scheduler of the os might do a context switch on the program(nto nesseceraly the tasks of the program) and put them on the SLEEP mode.
+
+We can also extract the fact that, when we are running the program on multicore systems, there is a lot of idle time on the processor(actually not since the scheduler might schedule other tasks
+apart from the program we are running) whereas if we run the same program on a single core system we can see that there is a little idle time and thus monotonic scheduling is more effective.
